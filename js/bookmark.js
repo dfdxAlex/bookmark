@@ -1,4 +1,7 @@
 
+
+// function draws the given number of divs. Needed only for
+// test solution.
 // функция рисует заданное колличество дивов. Нужна лишь для
 // тестирования решения.
 function poleSquare(intDiv)
