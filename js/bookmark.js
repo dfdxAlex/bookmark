@@ -33,8 +33,7 @@ function activeClick()
         // блок - закладку
         index.setAttribute("class", "f");
         
-        // index.append(tegA);
-        // функция ищет елементы с атрибутами Data-Link
+        // функция ищит закладки и создает кнопки
         searchDataLink();
         });
 }
