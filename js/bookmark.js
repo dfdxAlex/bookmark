@@ -1,3 +1,19 @@
+function searchDataLink()
+{
+
+    let mas = document.getElementsByClassName("f");
+    // let tegA;
+    // tegA.setAttribute("Data-link", index.id);
+
+      for (let elem of mas) {
+         tegA = document.createElement("button");
+         tegA.setAttribute("class", "bottomJs");
+        // tegA.setAttribute("href", "");
+        // console.log(elem.id);
+        document.body.append(tegA);
+      }
+    // console.log(mas);
+}
 
 // The function finds all the divs on the page and adds events to them
 // Функция находит все дивы на странице и добавляет им события
@@ -11,13 +27,15 @@ function activeClick()
     // при клике на Div вставляется ссылка с дата-атрибутом
     for (let index of allDiv)
         index.addEventListener("click", event => {
-        // create a tag and add the Data-link attribute to it
-        // containing the id value
-        // создать тег а и добавить в него дата-атрибут Data-link
-        // содержащий значение id
-        let tegA = document.createElement("a");
-        tegA.setAttribute("Data-link", index.id)
-        index.append(tegA);
+        // adds a class to the div to mark
+        // block - bookmark
+        // добавляет класс в див для того, чтобы пометить 
+        // блок - закладку
+        index.setAttribute("class", "f");
+        
+        // index.append(tegA);
+        // функция ищет елементы с атрибутами Data-Link
+        searchDataLink();
         });
 }
 
