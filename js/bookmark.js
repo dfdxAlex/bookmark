@@ -1,7 +1,6 @@
 function searchDataLink()
 {
-
-    // найти все элементы, в которых есть class="f"
+    // найти все элементы, в которых есть data-class
     let mas = document.querySelectorAll("[data-class]");
     let tegA;
 
@@ -9,9 +8,28 @@ function searchDataLink()
     let tegDivPanel = document.getElementsByClassName("panel");
 
       for (let elem of mas) {
+         // elem содержит один из елементов в массиве, в котором хранится
+         // список необходимых кнопок.
+
+         // определяем data-n текущей закладки
+         let select = '[data-n="'+elem.id+'"]';
+         // пробуем выбрать элемент с таким дата атрибутом
+         let dataN = document.querySelector(select);
+         // проверяем удалось ли выбрать элемент по такому
+         // дата атрибуту
+         // если удалось, значит кнопка уже есть, выходим из итерации
+         if (dataN!=null) continue;
+
+         // создаем кнопку button
          tegA = document.createElement("button");
+         // добавляем кнопке атрибут class, для стилизации
          tegA.setAttribute("class", "bottomJs");
+         // добавляем дата-атрибут data-n и помещаем в него id 
+         // елемента, по которому клацнули для создания закладки
+         tegA.setAttribute("data-n", elem.id);
+         // создаем ссылку на якорь для конкретной кнопки
          tegA.setAttribute("formaction", "#"+elem.id);
+         // добавляем кнопку в div со служебным классом class="panel"
          tegDivPanel[0].append(tegA);
       }
 }
@@ -53,5 +71,4 @@ function poleSquare(intDiv)
         newDiv.id = "test"+i;
         document.body.append(newDiv);
     }
-
 }
