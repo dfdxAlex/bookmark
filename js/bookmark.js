@@ -1,18 +1,19 @@
 function searchDataLink()
 {
 
-    let mas = document.getElementsByClassName("f");
-    // let tegA;
-    // tegA.setAttribute("Data-link", index.id);
+    // найти все элементы, в которых есть class="f"
+    let mas = document.querySelectorAll("[data-class]");
+    let tegA;
+
+    // находим див для панели закладок
+    let tegDivPanel = document.getElementsByClassName("panel");
 
       for (let elem of mas) {
          tegA = document.createElement("button");
          tegA.setAttribute("class", "bottomJs");
-        // tegA.setAttribute("href", "");
-        // console.log(elem.id);
-        document.body.append(tegA);
+         tegA.setAttribute("formaction", "#"+elem.id);
+         tegDivPanel[0].append(tegA);
       }
-    // console.log(mas);
 }
 
 // The function finds all the divs on the page and adds events to them
@@ -31,8 +32,8 @@ function activeClick()
         // block - bookmark
         // добавляет класс в див для того, чтобы пометить 
         // блок - закладку
-        index.setAttribute("class", "f");
-        
+        index.setAttribute("data-class", "");
+
         // функция ищит закладки и создает кнопки
         searchDataLink();
         });
