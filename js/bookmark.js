@@ -1,34 +1,49 @@
 function searchDataLink()
 {
     // найти все элементы, в которых есть data-class
+    // find all elements that have data-class
     let mas = document.querySelectorAll("[data-class]");
     let tegA;
 
+    // find the div for the bookmarks bar
     // находим див для панели закладок
     let tegDivPanel = document.getElementsByClassName("panel");
 
       for (let elem of mas) {
+         // elem contains one of the elements in the array, which holds 
+         // the list of required buttons.
          // elem содержит один из елементов в массиве, в котором хранится
          // список необходимых кнопок.
 
+         // define the data-n of the current bookmark
          // определяем data-n текущей закладки
          let select = '[data-n="'+elem.id+'"]';
+         // try to select an element with this date attribute
          // пробуем выбрать элемент с таким дата атрибутом
          let dataN = document.querySelector(select);
+         // check if we managed to select an element by this
+         // attribute date
+         // if successful, then the button is already there, exit the iteration
          // проверяем удалось ли выбрать элемент по такому
          // дата атрибуту
          // если удалось, значит кнопка уже есть, выходим из итерации
          if (dataN!=null) continue;
 
          // создаем кнопку button
+         // create button
          tegA = document.createElement("button");
+         // add a class attribute to the button, for styling
          // добавляем кнопке атрибут class, для стилизации
          tegA.setAttribute("class", "bottomJs");
+         // add data attribute data-n and put id into it
+         // element clicked to create a bookmark
          // добавляем дата-атрибут data-n и помещаем в него id 
          // елемента, по которому клацнули для создания закладки
          tegA.setAttribute("data-n", elem.id);
+         // create an anchor link for a specific button
          // создаем ссылку на якорь для конкретной кнопки
          tegA.setAttribute("formaction", "#"+elem.id);
+         // add button to div with utility class class="panel"
          // добавляем кнопку в div со служебным классом class="panel"
          tegDivPanel[0].append(tegA);
       }
